@@ -3,14 +3,17 @@ import "./App.css";
 
 export const App = () => {
   const [addName, setAddName] = useState(['']);
-  // 追加するテキスト
+  const [addEmail, setAddEmail] = useState(['']);
+  // 追加する名前・、メールテキスト
   const [names, setNames] = useState([""]);
-  // 現在のテキスト
+  const [emails, setEmails] = useState([""])
+  // 現在の名前テキスト・メールテキスト
 
   const onChangeAddName = (event) => setAddName(event.target.value);
-  // フォームを入力
+  const onChangeAddEmail = (event) => setAddEmail(event.target.value);
+  // 名前フォーム・メールフォームを入力
   
-  const onClickAdd = () => {
+  const onClickAddName = () => {
     // 追加ボタン
     if (addName === "") return;
     // 空だと返す
@@ -18,11 +21,24 @@ export const App = () => {
     setNames(newNames);
     setAddName("");
   };
+
+  const onClickAddEmail = () => {
+    if (addEmail === "") return;
+    const newEmails = [...emails, addEmail];
+    setEmails(newEmails);
+    setAddEmail("");
+  };
+
   return (
     <ul>
       <div className="input-area">
         <input placeholder="名前" value={addName} onChange={onChangeAddName }/>
-        <button onClick={onClickAdd}>追加</button>
+        <button onClick={onClickAddName}>追加</button>
+      </div>
+
+      <div className="input-area" value={addEmail} onChange={onChangeAddEmail}>
+        <input placeholder="メールアドレス" />
+        <button onClick={onClickAddEmail}>追加</button>
       </div>
 
       <div className="newText-area">
@@ -35,7 +51,18 @@ export const App = () => {
               </div>
             );
           })}
-              
+        </ul>
+
+        <p>追加したメールアドレス</p>
+        <ul>
+          {emails.map((email) => {
+            return (
+              <div key={email} className="list-row">
+                <li>{email}</li>
+              </div>
+            );
+          })}
+
           
         </ul>
       </div>
