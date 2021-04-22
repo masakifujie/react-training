@@ -17,7 +17,7 @@ export const App = () => {
   // 名前フォーム・メールフォーム・電話フォームを入力
 
   const onClickAddName = () => {
-    // 追加ボタン
+    // 名前追加ボタン
     if (addName === "") return;
     // 空だと返す
     const newNames = [...names, addName];
@@ -40,6 +40,28 @@ export const App = () => {
     setNumbers(newNumbers);
     setAddNumber("");
   }
+  //新しい電話番号の配列作成
+
+  const onClickDeleteName = (index) => {
+    const newNames = [...names];
+    newNames.splice(index, 1);
+    setNames(newNames);
+  };
+  //名前の削除
+
+  const onClickDeleteEmail = (index) => {
+    const newEmails = [...emails];
+    newEmails.splice(index, 1);
+    setEmails(newEmails);
+  };
+  //メールの削除
+
+  const onClickDeleteNumber = (index) => {
+    const newNumbers = [...numbers]
+    newNumbers.splice(index, 1);
+    setNumbers(newNumbers);
+  };
+  //電話番号の削除
   return (
     <>
       <div className="input-area">
@@ -59,10 +81,11 @@ export const App = () => {
       <div className="newText-area">
         <p>追加した名前</p>
         <ul>
-          {names.map((name) => {
+          {names.map((name, index) => {
             return (
               <div key={name} className="list-row">
                 <li>{name}</li>
+                <button onClick={() => onClickDeleteName(index)}>削除</button>
               </div>
             );
           })}
@@ -70,10 +93,11 @@ export const App = () => {
 
         <p>追加したメールアドレス</p>
         <ul>
-          {emails.map((email) => {
+          {emails.map((email, index) => {
             return (
               <div key={email} className="list-row">
                 <li>{email}</li>
+                <button onClick={() => onClickDeleteEmail(index)}>削除</button>
               </div>
             );
           })}
@@ -81,10 +105,11 @@ export const App = () => {
 
         <p>追加した電話番号</p>
         <ul>
-          {numbers.map((number) => {
+          {numbers.map((number, index) => {
             return (
               <div key={number} className="list-row">
                 <li>{number}</li>
+                <button onClick={() => onClickDeleteNumber(index)}>削除</button>
               </div>
             );
           })}
