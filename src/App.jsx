@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { InputNameArea } from './component/InputNameArea';
 
 export const App = () => {
   const [addNumber, setAddNumber] = useState([""]);
@@ -64,16 +65,11 @@ export const App = () => {
   //電話番号の削除
   return (
     <>
+      <InputNameArea addName={addName} onChange={onChangeAddName} onClick={ onClickAddName }/>
       <div className="input-area">
-        <input placeholder="名前" value={addName} onChange={onChangeAddName} />
-        <button onClick={onClickAddName}>追加</button>
-      </div>
-
-      <div className="input-area" >
-        <input placeholder="メールアドレス" value={addEmail} onChange={onChangeAddEmail}/>
-        <button onClick={onClickAddEmail}>追加</button>
-      </div>
-
+      <input placeholder="メール" value={addEmail} onChange={onChangeAddEmail} />
+      <button onClick={onClickAddEmail}>追加</button>
+    </div>
       <div className="input-area" >
         <input placeholder="電話番号" value={addNumber} onChange={onChangeAddNumber}/>
         <button onClick={onClickAddNumber}>追加</button>
