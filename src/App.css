@@ -6,6 +6,8 @@
 .newText-area ul{
   list-style:none;
 }
-.input-area p{
+
+.alert-name {
   color:red;
 }
+/* nameのバリデーション */

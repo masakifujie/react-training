@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { InputNameArea } from "./component/InputNameArea";
+import { NewNameArea } from "./component/NewNameArea";
 
 export const App = () => {
   const [nameAlert, setNameAlert] = useState(false);
@@ -43,20 +44,11 @@ export const App = () => {
           onClick={onClickAddName}
         />
 
-        <div className="newText-area">
-        {nameAlert && <p>名前を入力してください!</p>}
-          <p>追加した名前</p>
-          <ul>
-            {names.map((name, index) => {
-              return (
-                <div key={name} className="list-row">
-                  <li>{name}</li>
-                  <button onClick={() => onClickDeleteName(index)}>削除</button>
-                </div>
-              );
-            })}
-          </ul>
-        </div>
+        <NewNameArea
+          names={names}
+          nameAlert={nameAlert}
+          onClickDeleteName={onClickDeleteName}
+        />
       </div>
     </>
   );
