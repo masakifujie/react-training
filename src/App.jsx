@@ -6,7 +6,7 @@ import { NewNameArea } from "./component/NewNameArea";
 export const App = () => {
   const [nameAlert, setNameAlert] = useState(false);
   //名前バリデーション
-  const [addName, setAddName] = useState([""]);
+  const [addName, setAddName] = useState("");
   // 追加する名前・、メール電話テキスト
   const [names, setNames] = useState([]);
   // 現在の名前テキスト・メール・電話テキスト
@@ -21,8 +21,10 @@ export const App = () => {
     } else {
       nameAlert && setNameAlert(false);
     }
+    console.log(addName)
     // 空だと返す
     const newNames = [...names, addName];
+    
     setNames(newNames);
     setAddName("");
   };
