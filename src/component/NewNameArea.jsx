@@ -1,12 +1,14 @@
 import React from "react";
 
 export const NewNameArea = (props) => {
-  const { names, nameAlert, onClickDeleteName } = props;
+  const { names, nameAlert, onClickDeleteName, nameSuccess } = props;
 
   return (
     <div className="newText-area">
       <div className="alert-name">
-        {nameAlert && <p>名前を入力してください!</p>}
+        {nameAlert && <p>名前を入力せんと困るで</p>}
+        {/* trueの時に右を返す */}
+        {nameSuccess && <p>追加したよーん</p>}
       </div>
       <p>追加した名前</p>
       <ul>
